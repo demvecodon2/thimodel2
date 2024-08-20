@@ -1,6 +1,8 @@
 package quan_ly_tai_khoan.controller;
 
 import quan_ly_tai_khoan.model.TaiKhoan;
+import quan_ly_tai_khoan.model.TaiKhoanThanhToan;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -29,7 +31,15 @@ public class TheQuanLy {
             System.out.print("ngày mở tài khoản đã tự điền: ");
             LocalDate ngayMo = LocalDate.now();
 
-            TaiKhoan taiKhoan = new TaiKhoan(id, maTaiKhoan, tenTaiKhoan, ngayMo);
+            System.out.println("Số thẻ");
+            String soThe = scanner.nextLine();
+
+            System.out.println("số tiền trong tài khoản còn lại là:");
+            double soTaiKhoan = scanner.nextDouble();
+
+
+
+            TaiKhoanThanhToan taiKhoan = new TaiKhoanThanhToan(id, maTaiKhoan, tenTaiKhoan, ngayMo,soThe,soTaiKhoan){};
             taiKhoanList.add(taiKhoan);
             saveTaiKhoan();
             System.out.println("Thêm tài khoản thành công.");
@@ -50,7 +60,7 @@ public class TheQuanLy {
             System.out.print("Nhập mã tài khoản cần xóa: ");
             String maTaiKhoan = scanner.nextLine();
 
-            TaiKhoan taiKhoanToDelete = taiKhoanList.stream()
+            TaiKhoanThanhToan taiKhoanToDelete = (TaiKhoanThanhToan) taiKhoanList.stream()
                     .filter(tk -> tk.getMaTaiKhoan().equals(maTaiKhoan))
                     .findFirst()
                     .orElse(null);
@@ -80,7 +90,7 @@ public class TheQuanLy {
             System.out.print("Nhập ID tài khoản cần tìm: ");
             int idTaiKhoan = Integer.parseInt(scanner.nextLine());
 
-            TaiKhoan taiKhoanFound = taiKhoanList.stream()
+            TaiKhoanThanhToan taiKhoanFound = (TaiKhoanThanhToan) taiKhoanList.stream()
                     .filter(tk -> tk.getIdTaiKhoan() == idTaiKhoan)
                     .findFirst()
                     .orElse(null);
@@ -107,8 +117,9 @@ public class TheQuanLy {
                 String tenTaiKhoan = data[2];
                 LocalDate ngayTaoTaiKhoan = LocalDate.parse(data[3]);
 
-                TaiKhoan taiKhoan = new TaiKhoan(id, maTaiKhoan, tenTaiKhoan, ngayTaoTaiKhoan);
-                taiKhoanList.add(taiKhoan);
+                TaiKhoanThanhToan taiKhoanThanhToan = new TaiKhoanThanhToan(id,maTaiKhoan,tenTaiKhoan,ngayTaoTaiKhoan) {
+                };
+                taiKhoanList.add(taiKhoanThanhToan);
             }
         } catch (IOException e) {
             System.out.println("Lỗi đọc file: " + e.getMessage());
@@ -117,8 +128,8 @@ public class TheQuanLy {
 
     private void saveTaiKhoan() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            for (TaiKhoan taiKhoan : taiKhoanList) {
-                bw.write(taiKhoan.toCsvString() + "\n");
+            for (TaiKhoan taiKhoanThanhToan : taiKhoanList) {
+                bw.write(taiKhoanThanhToan.toCsvString() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Lỗi ghi file: " + e.getMessage());

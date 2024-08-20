@@ -2,26 +2,27 @@ package quan_ly_tai_khoan.model;
 
 import java.time.LocalDate;
 
-public class TaiKhoan {
-    private int idTaiKhoan;
+public abstract class TaiKhoan {
+    private int id;
     private String maTaiKhoan;
     private String tenTaiKhoan;
     private LocalDate ngayTaoTaiKhoan;
 
     public TaiKhoan(int idTaiKhoan, String maTaiKhoan, String tenTaiKhoan, LocalDate ngayTaoTaiKhoan) {
-        this.idTaiKhoan = idTaiKhoan;
+        this.id = idTaiKhoan;
         this.maTaiKhoan = maTaiKhoan;
         this.tenTaiKhoan = tenTaiKhoan;
         this.ngayTaoTaiKhoan = ngayTaoTaiKhoan;
     }
 
 
+
     public int getIdTaiKhoan() {
-        return idTaiKhoan;
+        return id;
     }
 
     public void setIdTaiKhoan(int idTaiKhoan) {
-        this.idTaiKhoan = idTaiKhoan;
+        this.id = idTaiKhoan;
     }
 
     public String getMaTaiKhoan() {
@@ -51,7 +52,7 @@ public class TaiKhoan {
     @Override
     public String toString() {
         return "TaiKhoan{" +
-                "idTaiKhoan=" + idTaiKhoan +
+                "idTaiKhoan=" + id +
                 ", maTaiKhoan='" + maTaiKhoan + '\'' +
                 ", tenTaiKhoan='" + tenTaiKhoan + '\'' +
                 ", ngayTaoTaiKhoan=" + ngayTaoTaiKhoan +
@@ -59,10 +60,11 @@ public class TaiKhoan {
     }
 
     public String toCsvString() {
-        return idTaiKhoan + "," +
+        return id + "," +
                 maTaiKhoan + "," +
                 tenTaiKhoan + "," +
                 ngayTaoTaiKhoan;
     }
+
 
 }

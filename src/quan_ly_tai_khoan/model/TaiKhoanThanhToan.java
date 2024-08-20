@@ -4,9 +4,14 @@ import java.time.LocalDate;
 
 public class TaiKhoanThanhToan extends TaiKhoan {
     private String soThe;
-    private String soTienTrongTaiKhoan;
-    public TaiKhoanThanhToan(String idTaiKhoan, String maTaiKhoan, String tenTaiKhoan, LocalDate ngayTaoTaiKhoan ,String soThe, String soTienTrongTaiKhoan) {
-        super(Integer.parseInt(idTaiKhoan),maTaiKhoan,tenTaiKhoan,ngayTaoTaiKhoan);
+    private double soTienTrongTaiKhoan;
+
+    public TaiKhoanThanhToan(int idTaiKhoan, String maTaiKhoan, String tenTaiKhoan, LocalDate ngayTaoTaiKhoan) {
+        super(idTaiKhoan, maTaiKhoan, tenTaiKhoan, ngayTaoTaiKhoan);
+    }
+
+    public TaiKhoanThanhToan(int id, String maTaiKhoan, String tenTaiKhoan, LocalDate ngayMo, String soThe, double soTienTrongTaiKhoan) {
+        super(id,maTaiKhoan,tenTaiKhoan,ngayMo);
         this.soThe = soThe;
         this.soTienTrongTaiKhoan=soTienTrongTaiKhoan;
     }
@@ -19,17 +24,21 @@ public class TaiKhoanThanhToan extends TaiKhoan {
         this.soThe = soThe;
     }
 
-    public String getSoTienTrongTaiKhoan() {
+    public double getSoTienTrongTaiKhoan() {
         return soTienTrongTaiKhoan;
     }
 
     public void setSoTienTrongTaiKhoan(String soTienTrongTaiKhoan) {
-        this.soTienTrongTaiKhoan = soTienTrongTaiKhoan;
+        this.soTienTrongTaiKhoan = Double.parseDouble(soTienTrongTaiKhoan);
     }
 
     @Override
     public String toString() {
         return "TaiKhoanThanhToan{" +
+                "id=" + getIdTaiKhoan() +
+                "maTaiKhoan=" + getMaTaiKhoan() +
+                "tenTaiKhoan=" + getTenTaiKhoan() +
+                "ngayTaoTaiKhoan+"+getNgayTaoTaiKhoan()+
                 "soThe='" + soThe + '\'' +
                 ", soTienTrongTaiKhoan='" + soTienTrongTaiKhoan + '\'' +
                 '}';

@@ -52,6 +52,10 @@ public class TaiKhoanTietKiem extends TaiKhoan {
     @Override
     public String toString() {
         return "TaiKhoanTietKiem{" +
+                "id=" + getIdTaiKhoan() +
+                "maTaiKhoan=" + getMaTaiKhoan() +
+                "tenTaiKhoan=" + getTenTaiKhoan() +
+                "ngayTaoTaiKhoan+"+getNgayTaoTaiKhoan()+
                 "soTien=" + soTien +
                 ", ngayGuiTietKiem=" + ngayGuiTietKiem +
                 ", laiSuat='" + laiSuat + '\'' +
