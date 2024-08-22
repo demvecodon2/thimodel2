@@ -19,7 +19,7 @@ public class VehicleManager {
             System.out.println("3. Thoát");
             System.out.print("Chọn một tùy chọn: ");
             choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
