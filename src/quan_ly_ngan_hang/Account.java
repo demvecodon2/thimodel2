@@ -87,8 +87,8 @@ public class Account {
     @Override
     public String toString() {
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
-        return String.format("Số tài khoản: %d\nTên tài khoản: %s\nSố tiền trong tài khoản: %s",
+        return String.format("Số tài khoản: \nTên tài khoản: \nSố tiền trong tài khoản:",
                 accountNumber, accountName, currencyFormat.format(balance));
     }
-    
+
 }
