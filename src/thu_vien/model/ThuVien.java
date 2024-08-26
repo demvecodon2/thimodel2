@@ -4,7 +4,7 @@ public abstract class ThuVien {
     private String maTaiLieu;
     private String tenNhaXuatBan;
     private int soBanPhatHanh;
-    public ThuVien(String id, String name, int age) {
+    public ThuVien(String id, String name, int soBanPhatHanh) {
         this.maTaiLieu = id;
         this.tenNhaXuatBan = name;
         this.soBanPhatHanh = soBanPhatHanh;
@@ -27,8 +27,8 @@ public abstract class ThuVien {
     public int soBanPhatHanh() {
         return soBanPhatHanh;
     }
-    public void soBanPhatHanh(int age) {
-        this.soBanPhatHanh = age;
+    public void soBanPhatHanh(int soBanPhatHanh) {
+        this.soBanPhatHanh = soBanPhatHanh;
     }
     @Override
     public String toString() {

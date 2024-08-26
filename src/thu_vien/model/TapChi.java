@@ -6,8 +6,8 @@ public class TapChi extends ThuVien{
     private String soPhatHanh;
     private LocalDate thangPhatHanh;
 
-    public TapChi(String maTaiLieu, String name, int age, String soPhatHanh, LocalDate thangPhatHanh) {
-        super(maTaiLieu, name, age);
+    public TapChi(String maTaiLieu, String name, int soBanPhatHanh, String soPhatHanh, LocalDate thangPhatHanh) {
+        super(maTaiLieu, name, soBanPhatHanh);
         this.soPhatHanh = soPhatHanh;
         this.thangPhatHanh = thangPhatHanh;
     }

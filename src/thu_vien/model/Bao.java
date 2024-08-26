@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Bao extends ThuVien{
     LocalDate ngayPhatHanh;
 
-    public Bao(String maTaiLieu, String name, int age, LocalDate ngayPhatHanh) {
-        super(maTaiLieu, name, age);
+    public Bao(String maTaiLieu, String name, int soBanPhatHanh, LocalDate ngayPhatHanh) {
+        super(maTaiLieu, name, soBanPhatHanh);
         this.ngayPhatHanh = ngayPhatHanh;
     }
 

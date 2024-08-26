@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class QuanLyTaiKhoan {
 
-
-
     public static void main(String[] args) {
         TheQuanLy theQuanLy = new TheQuanLy();
         Scanner scanner = new Scanner(System.in);
