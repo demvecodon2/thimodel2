@@ -2,7 +2,6 @@ package tiem_sach.controller;
 
 import tiem_sach.mode.Sach;
 import tiem_sach.mode.TapChi;
-import tiem_sach.mode.TiemSach;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -18,7 +17,6 @@ public class QuanLyTiemSach {
     private static final String FILE_PATH = "src/tiem_sach/file/tiemsach.csv";
 
     public QuanLyTiemSach() {
-        loadDataFromFile();
     }
 
     public static void add() {
@@ -55,18 +53,20 @@ public class QuanLyTiemSach {
     }
 
     public static void hienThiTaiLieu() {
+        loadDataFromFile();
         int choice = getChoice("Lựa chọn loại tài liệu mà bạn muốn xem:\n" +
                 "1. Hiển thị sách trong tiệm\n" +
                 "2. Hiển thị tạp chí trong tiệm\n" +
                 "3. Hiển thị tất cả tài liệu trong cửa hàng", 1, 3);
-
         switch (choice) {
             case 1:
                 if (sachList.isEmpty()) {
                     System.out.println("Sách trong tiệm hiện tại không có.");
                 } else {
                     System.out.println("Sách trong tiệm:");
-                    sachList.forEach(System.out::println);
+                    for (Sach sach : sachList) {
+                        System.out.println(sach);
+                    }
                 }
                 break;
             case 2:
@@ -138,22 +138,41 @@ public class QuanLyTiemSach {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] split = line.split(",");
-                String maTaiLieu = split[0];
-                String tieuDe = split[1];
-                String nhaSanXuat = split[2];
-                LocalDate ngaySanXuat = LocalDate.parse(split[3]);
-
-                if (isSach(maTaiLieu)) {
+                if (split.length == 7) {
+                    String maTaiLieu = split[0];
+                    String tieuDe = split[1];
+                    String nhaSanXuat = split[2];
+                    LocalDate ngaySanXuat = LocalDate.parse(split[3]);
                     String tenTacGia = split[4];
                     double soTrangSach = Double.parseDouble(split[5]);
                     String theLoaiSach = split[6];
                     Sach sach = new Sach(maTaiLieu, tieuDe, nhaSanXuat, ngaySanXuat, tenTacGia, soTrangSach, theLoaiSach);
                     sachList.add(sach);
-                } else {
+                }else { if(split.length==5){
+                    String maTaiLieu = split[0];
+                    String tieuDe = split[1];
+                    String nhaSanXuat = split[2];
+                    LocalDate ngaySanXuat = LocalDate.parse(split[3]);
                     String chuDe = split[4];
-                    TapChi tapChi = new TapChi(maTaiLieu, tieuDe, nhaSanXuat, ngaySanXuat, chuDe);
-                    tapChiList.add(tapChi);
+                    TapChi tapChi= new TapChi(maTaiLieu,tieuDe,nhaSanXuat,ngaySanXuat,chuDe);
+                    tapChiList.add( tapChi );
                 }
+                }
+//                String maTaiLieu = split[0];
+//                String tieuDe = split[1];
+//                String nhaSanXuat = split[2];
+//                LocalDate ngaySanXuat = LocalDate.parse(split[3]);
+////                if () {
+//                String tenTacGia = split[4];
+//                double soTrangSach = Double.parseDouble(split[5]);
+//                String theLoaiSach = split[6];
+//                Sach sach = new Sach(maTaiLieu, tieuDe, nhaSanXuat, ngaySanXuat, tenTacGia, soTrangSach, theLoaiSach);
+//                sachList.add(sach);
+//                } else {
+//                    String chuDe = split[4];
+//                    TapChi tapChi = new TapChi(maTaiLieu, tieuDe, nhaSanXuat, ngaySanXuat, chuDe);
+//                    tapChiList.add(tapChi);
+//                }
             }
         } catch (IOException ex) {
             System.err.println("Error loading data from file: " + ex.getMessage());

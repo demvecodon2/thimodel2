@@ -1,17 +1,11 @@
 package tiem_sach.view;
 
-import tiem_sach.mode.Sach;
-import tiem_sach.mode.TapChi;
+import tiem_sach.controller.QuanLyTiemSach;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import static tiem_sach.controller.QuanLyTiemSach.*;
 
 public class ViewTiemSach {
     private static final Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
         while (true) {
             System.out.println("Nhap thu vien?");
@@ -20,22 +14,20 @@ public class ViewTiemSach {
             System.out.println("3. Xoá tài liệu theo mã");
             System.out.println("4. Tìm kiếm tài liệu theo mã gần đúng");
             System.out.println("5. Thoát chương trình");
-
             int choice = scanner.nextInt();
             scanner.nextLine();
-
             switch (choice) {
                 case 1:
-                    hienThiTaiLieu();
+                    QuanLyTiemSach.hienThiTaiLieu();
                     break;
                 case 2:
-                    add();
+                    QuanLyTiemSach.add();
                     break;
                 case 3:
-                    xoaTaiLieu();
+                    QuanLyTiemSach.xoaTaiLieu();
                     break;
                 case 4:
-                    timKiemTaiLieu();
+                    QuanLyTiemSach.timKiemTaiLieu();
                     break;
                 case 5:
                     System.exit(0);
